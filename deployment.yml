@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-web-app
+
+  template:
+    metadata:
+      name: my-web-app
+      labels:
+        app: my-web-app
+    spec:
+      containers:
+        - name: custom-image
+          image: amrhamouda/project
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
